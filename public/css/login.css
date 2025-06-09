@@ -1,0 +1,110 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url('/image/UnandAnimate.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    background-color:  #2E5E4E;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  .login-container h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .login-container input[type="email"],
+  .login-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .login-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #022f20;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .login-container button:hover {
+    background-color: #FF8C42;
+    transform: scale(1.05);
+  }
+
+  #error-message {
+  display: none;
+  color: red;
+  margin-top: 10px;
+  font-weight: 600; /* opsional, supaya lebih jelas */
+}
+  
+  .login-container .signup-link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .login-container .signup-link a {
+    color: purple;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .login-container .signup-link a:hover {
+    text-decoration: underline;
+  }
+
+  .input-group {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 5px 15px;
+  margin: 8px 0;
+}
+
+.input-group i {
+  color: #333;
+  margin-right: 10px;
+  font-size: 16px;
+  min-width: 10px;
+  text-align: center;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  background-color: whitesmoke;
+}
+  
+
+  
+  
+  
