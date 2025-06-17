@@ -10,6 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = emailInput.value.trim();
         const password = passwordInput.value;
 
+        // ✅ Tambahkan validasi input kosong
+        if (!email || !password) {
+            errorMessage.textContent =
+                "Harap isi email dan password terlebih dahulu.";
+            errorMessage.style.display = "block";
+            return;
+        }
+
         try {
             const response = await fetch("/login", {
                 method: "POST",
@@ -18,15 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     "X-CSRF-TOKEN": document
                         .querySelector('meta[name="csrf-token"]')
                         .getAttribute("content"),
+                    Accept: "application/json",
                 },
                 body: JSON.stringify({ email, password }),
             });
 
-            if (response.redirected) {
-                window.location.href = response.url; // Redirect ke dashboard
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                window.location.href = data.redirect;
             } else {
-                const text = await response.text();
-                errorMessage.textContent = "Email atau password salah.";
+                errorMessage.textContent = data.message || "Login gagal.";
                 errorMessage.style.display = "block";
             }
         } catch (err) {

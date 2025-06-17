@@ -24,7 +24,7 @@ body {
   .signup-container h1 {
     margin-bottom: 20px;
     font-size: 28px;
-    color: #000;
+    color: #FF8C42;
     font-weight: bold;
   }
   
@@ -72,6 +72,18 @@ body {
   
   .signup-container .login-link a:hover {
     text-decoration: underline;
+  }
+
+  .input-group {
+    position: relative;
+  }
+  .toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
   }
 
 

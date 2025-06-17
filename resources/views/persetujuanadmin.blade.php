@@ -21,35 +21,47 @@
       <h2>UnandPath</h2>
       <ul>
         <li><a href="/dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
-        <li><a href="/akademik"><i class="fas fa-graduation-cap"></i> Kegiatan Akademik</a></li>
-        <li><a href="/nonakademik"><i class="fas fa-basketball-ball"></i> Kegiatan Non-Akademik</a></li>
+        <li><a href="/tambahkegiatan"><i class="fas fa-graduation-cap"></i> Tambah Kegiatan</a></li>
         <li><a href="/laporanskpi"><i class="fas fa-file-alt"></i> Laporan SKPI</a></li>
-        <li><a href="/persetujuanadmin"><i class="fas fa-user-check"></i> Persetujuan Admin</a></li>
+        <li><a href="/persetujuanadmin" class="active"><i class="fas fa-user-check"></i> Persetujuan</a></li>
+        <li>
+          <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+            @csrf
+            <button type="submit" class="logout-button">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+          </form>
+        </li>
       </ul>
     </aside>
 
     <main class="main-content expanded" id="mainContent">
-        <div class="profile">👤 Mahasiswa</div>
-        <h3>Informasi Mahasiswa</h3>
-        <table class="info-table" id="tabelMahasiswa">
-            <thead>
+      <div class="profile">👤 {{ Auth::user()->name ?? 'Mahasiswa' }}</div>
+
+      <h3>Informasi Mahasiswa</h3>
+      <table class="info-table">
+          <thead>
               <tr>
-                <th>Kategori</th>
-                <th>Deskripsi</th>
-                <th>Status</th>
+                  <th>Kategori</th>
+                  <th>Judul</th>
+                  <th>Deskripsi</th>
+                  <th>Tanggal</th>
+                  <th>Status</th> {{-- ✅ Kolom status --}}
               </tr>
-            </thead>
-            <tbody id="dataMahasiswa">
-              <tr>
-                <td>Kegiatan Akademik</td>
-                <td>Mengikuti 22 SKS pada Semester Genap 2024/2025</td>
-              </tr>
-              <tr>
-                <td>Kegiatan Non-Akademik</td>
-                <td>Aktif di UKM Robotika dan BEM Fakultas</td>
-              </tr>
-            </tbody>
-          </table>
+          </thead>
+          <tbody>
+              @foreach ($activities as $index => $activity)
+                  <tr>
+                      <td>{{ $activity->category->name ?? '-' }}</td>
+                      <td>{{ $activity->title }}</td>
+                      <td>{{ $activity->description }}</td>
+                      <td>{{ \Carbon\Carbon::parse($activity->date)->format('d-m-Y') }}</td>
+                      <td>{{ ucfirst($activity->status) }}</td> {{-- ✅ Menampilkan status --}}
+                  </tr>
+              @endforeach
+          </tbody>
+      </table>
+      
     </main>
   </div>
     <script src="js/persetujuanadmin.js"></script>

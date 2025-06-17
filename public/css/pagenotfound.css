@@ -1,0 +1,51 @@
+/* Reset dan base */
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/image/UnandAnimate.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .content {
+    min-height: 90vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.glass h1 {
+    font-size: 64px;
+    margin-bottom: 10px;
+}
+
+.glass p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-home {
+    padding: 10px 24px;
+    background-color: #2E5E4E;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(251, 250, 250, 0);
+}
+
+.btn-home:hover {
+    background-color: #FF8C42;
+    transform: scale(1.05);
+}
+
+
+  

@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Navigasi tombol tambah kegiatan
     if (addButton) {
         addButton.addEventListener("click", () => {
-            window.location.href = "/tambahkegiatan";
+            window.location.href = "/data";
         });
     }
 });

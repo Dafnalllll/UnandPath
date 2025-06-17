@@ -18,7 +18,7 @@ body {
     height: 100vh;
     margin: 0; /* hilangkan margin kiri */
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #d1c70729;
     overflow: auto;
     box-sizing: border-box;
 }
@@ -54,6 +54,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+ 
 }
 
 .stats {
@@ -87,25 +88,29 @@ table {
 
 th, td {
   padding: 12px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #333333;
   text-align: left;
-}
-
-.add-button {
-  margin-top: 10px;
-  background: #2d8c36;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.add-button:hover {
-  background: #256a34;
 }
 
 .user {
   font-weight: bold;
   color: #333;
 }
+
+.logout-button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  margin: 10px 0 0 20px;
+}
+
+.logout-button:hover {
+    color: #a5d6a7;
+}
+
+.action-btn {
+  cursor: pointer;
+}
+

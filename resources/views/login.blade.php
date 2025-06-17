@@ -15,7 +15,7 @@
     <h1>Login</h1>
 
     {{-- Form login Laravel --}}
-    <form id="login-form" action="{{ route('login.submit') }}" method="POST" novalidate>
+    <form id="login-form" method="POST" novalidate>
       @csrf
 
       <div class="input-group">
@@ -34,13 +34,17 @@
         Belum Punya Akun? <a href="/signup">Sign Up</a>
       </div>
 
-      {{-- Menampilkan error jika login gagal --}}
+      {{-- Error dari Laravel (fallback) --}}
       @if ($errors->any())
         <p id="error-message" style="color: red;">
           {{ $errors->first() }}
         </p>
+      @else
+        <p id="error-message" style="color: red; display: none;"></p>
       @endif
     </form>
   </div>
+
+  <script src="/js/login.js"></script>
 </body>
 </html>

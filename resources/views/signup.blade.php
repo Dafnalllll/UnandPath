@@ -13,28 +13,46 @@
 <body>
   <div class="signup-container">
     <h1>Sign Up</h1>
-    <form id="signup-form">
+    <form id="signup-form" action="{{ route('signup.submit') }}" method="POST" novalidate>
+      @csrf
+
       <div class="input-group">
         <i class="fas fa-user"></i>
-        <input type="text" id="fullname" placeholder="Full Name" required />
+        <input type="text" id="fullname" name="name" placeholder="Full Name" required autocomplete="name" />
       </div>
       <div class="input-group">
         <i class="fas fa-envelope"></i>
-        <input type="email" id="email" placeholder="Email" required />
+        <input type="email" id="email" name="email" placeholder="Email" required autocomplete="email" />
       </div>
       <div class="input-group">
         <i class="fas fa-lock"></i>
-        <input type="password" id="password" placeholder="Password" required />
+        <input type="password" id="password" name="password" placeholder="Password" required minlength="8" />
+        <span class="toggle-password" toggle="#password"><i class="fas fa-eye"></i></span>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Konfirmasi Password" required minlength="8" />
+        <span class="toggle-password" toggle="#password_confirmation"><i class="fas fa-eye"></i></span>
       </div>
 
       <button type="submit">Register</button>
-      <p id="error-message" style="color: red;"></p>
+
+      @if (session('success'))
+        <p style="color: green;">{{ session('success') }}</p>
+      @endif
+
+      <p id="error-message" style="color: red;">
+        @if ($errors->any())
+          {{ $errors->first() }}
+        @endif
+      </p>
+
       <div class="login-link">
         Sudah Punya Akun? <a href="/login">Login</a>
       </div>
     </form>
   </div>
 
-  <script src="js/signup.js"></script>
+  <script src="/js/signup.js"></script>
 </body>
 </html>

@@ -2,64 +2,75 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Document;
 use Illuminate\Http\Request;
+use App\Models\Document;
+use App\Models\Activity;
+use App\Models\Category;
 
 class DocumentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    // Dokumen Akademik
+    public function akademik()
     {
-        //
+        $documents = Document::with(['activity', 'category'])
+            ->whereHas('category', function ($query) {
+                $query->where('name', 'akademik'); // sesuaikan dengan nama kategori
+            })
+            ->latest()
+            ->get();
+
+        $activities = Activity::all();
+        $categories = Category::all();
+
+        return view('dokumenakademik', compact('documents', 'activities', 'categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // Dokumen Non-Akademik
+    public function nonakademik()
     {
-        //
+        $documents = Document::with(['activity', 'category'])
+            ->whereHas('category', function ($query) {
+                $query->where('name', 'non-akademik'); // sesuaikan juga
+            })
+            ->latest()
+            ->get();
+
+        $activities = Activity::all();
+        $categories = Category::all();
+
+        return view('dokumennonakademik', compact('documents', 'activities', 'categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Menyimpan dokumen baru
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'activity_id' => 'required|exists:activities,id',
+            'category_id' => 'required|exists:categories,id',
+            'file' => 'required|file|mimes:pdf,jpg,png,docx|max:2048',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Document $document)
-    {
-        //
-    }
+        // Simpan file
+        $fileName = $request->file('file')->store('documents', 'documents');
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Document $document)
-    {
-        //
-    }
+        // Simpan data ke database
+        $document = Document::create([
+            'activity_id' => $request->activity_id,
+            'category_id' => $request->category_id,
+            'file_name' => $fileName,
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Document $document)
-    {
-        //
-    }
+        // Ambil nama kategori dari relasi
+        $categoryName = $document->category->name;
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Document $document)
-    {
-        //
+        // Arahkan sesuai kategori
+        if ($categoryName === 'akademik') {
+            return redirect()->route('dokumen.akademik')->with('success', 'Dokumen akademik berhasil diunggah.');
+        } elseif ($categoryName === 'non-akademik') {
+            return redirect()->route('dokumen.nonakademik')->with('success', 'Dokumen non-akademik berhasil diunggah.');
+        }
+
+        // Arahkan ke dashboard jika tidak cocok
+        return redirect()->route('dashboard')->with('success', 'Dokumen berhasil diunggah.');
     }
 }
