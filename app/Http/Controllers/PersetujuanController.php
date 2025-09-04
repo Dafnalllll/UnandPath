@@ -13,7 +13,7 @@ class PersetujuanController extends Controller
     {
         $activities = Activity::with(['user', 'category'])->get();
         $activities = Activity::where('user_id', Auth::id())->get();
-        return view('persetujuanadmin', compact('activities'));
+        return view('user.persetujuanadmin', compact('activities'));
     }
 }
 

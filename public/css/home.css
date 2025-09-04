@@ -1,47 +1,319 @@
+/* ========================================
+   HOME PAGE CSS - COMPLETE
+   ======================================== */
+
 body {
-  margin: 0px;
-  padding: 0px;
-  background-image: url('/image/UnandAnimate.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background-image: url("/image/UnandAnimate.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+/* Background animation overlay */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(46, 94, 78, 0.1),
+        rgba(255, 140, 66, 0.1)
+    );
+    animation: backgroundShift 3s ease-in-out infinite alternate;
+    z-index: 1;
 }
 
 .UnandPath-banner {
-  position: absolute;
-  top: 250px; 
-  width: 100%;
-  text-align: center;
-  font-size: 100px;
-  font-weight: bold;
-  color: #FF8C42;
-  text-shadow: 5px 5px 10px rgba(3, 57, 38, 0);
-  z-index: 2;
+    position: absolute;
+    top: 250px;
+    width: 100%;
+    text-align: center;
+    font-size: 100px;
+    font-weight: bold;
+    color: #ff8c42;
+    text-shadow: 5px 5px 10px rgba(3, 57, 38, 0.3);
+    z-index: 2;
+    animation: titleGlow 2s ease-in-out infinite alternate;
+    transition: transform 0.3s ease-out;
+}
+
+.UnandPath-banner span {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.UnandPath-banner span:hover {
+    transform: scale(1.1) translateY(-10px);
+    text-shadow: 0 0 20px rgba(255, 140, 66, 0.8);
 }
 
 .getstarted-container {
-  text-align: center;
-  z-index: 3;
+    text-align: center;
+    z-index: 3;
+    transition: transform 0.3s ease-out;
 }
 
 .getstarted-container button {
-  padding: 10px 24px;
-  background-color: #2E5E4E;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 12px rgba(251, 250, 250, 0);
+    padding: 10px 24px;
+    background-color: #2e5e4e;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    box-shadow: 0 4px 12px rgba(46, 94, 78, 0.2);
+    position: relative;
+    overflow: hidden;
+    transform: scale(1);
 }
 
 .getstarted-container button:hover {
-  background-color: #FF8C42;
-  transform: scale(1.05);
+    background-color: #ff8c42 !important;
+    transform: scale(1.15) !important;
+    box-shadow: 0 8px 25px rgba(255, 140, 66, 0.5) !important;
+    color: #ffffff !important;
+}
+
+.getstarted-container button:active {
+    transform: scale(1.1) !important;
+}
+
+/* ========================================
+   ANIMATIONS & KEYFRAMES
+   ======================================== */
+
+/* Title glow animation */
+@keyframes titleGlow {
+    from {
+        text-shadow: 5px 5px 10px rgba(3, 57, 38, 0.3),
+            0 0 20px rgba(255, 140, 66, 0.5);
+    }
+    to {
+        text-shadow: 5px 5px 10px rgba(3, 57, 38, 0.5),
+            0 0 30px rgba(255, 140, 66, 0.8);
+    }
+}
+
+/* Background shift animation */
+@keyframes backgroundShift {
+    0% {
+        background: linear-gradient(
+            45deg,
+            rgba(46, 94, 78, 0.1),
+            rgba(255, 140, 66, 0.1)
+        );
+    }
+    100% {
+        background: linear-gradient(
+            45deg,
+            rgba(255, 140, 66, 0.1),
+            rgba(46, 94, 78, 0.1)
+        );
+    }
+}
+
+/* Fade in animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading animation */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2e5e4e, #ff8c42);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOut 0.5s ease-in-out 2s forwards;
+}
+
+.loader-text {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .UnandPath-banner {
+        font-size: 60px;
+        top: 200px;
+    }
+
+    .UnandPath-banner span {
+        display: inline;
+    }
+
+    .getstarted-container button {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .UnandPath-banner {
+        font-size: 40px;
+        top: 180px;
+    }
+
+    .getstarted-container button {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+}
+
+/* ========================================
+   AOS CUSTOM ANIMATIONS
+   ======================================== */
+
+[data-aos="fade-right"] {
+    transform: translateX(-100px);
+    opacity: 0;
+}
+
+[data-aos="fade-left"] {
+    transform: translateX(100px);
+    opacity: 0;
+}
+
+[data-aos="zoom-in"] {
+    transform: scale(0.6);
+    opacity: 0;
+}
+
+/* Advanced AOS Letter Animations */
+[data-aos="flip-left"] {
+    transform: perspective(2500px) rotateY(-100deg);
+    opacity: 0;
+}
+
+[data-aos="flip-right"] {
+    transform: perspective(2500px) rotateY(100deg);
+    opacity: 0;
+}
+
+[data-aos="flip-up"] {
+    transform: perspective(2500px) rotateX(-100deg);
+    opacity: 0;
+}
+
+[data-aos="fade-up-right"] {
+    transform: translate3d(-100px, 100px, 0);
+    opacity: 0;
+}
+
+[data-aos="fade-up-left"] {
+    transform: translate3d(100px, 100px, 0);
+    opacity: 0;
+}
+
+[data-aos="fade-down-left"] {
+    transform: translate3d(100px, -100px, 0);
+    opacity: 0;
+}
+
+[data-aos="fade-down-right"] {
+    transform: translate3d(-100px, -100px, 0);
+    opacity: 0;
+}
+
+[data-aos="zoom-in-up"] {
+    transform: translate3d(0, 100px, 0) scale(0.6);
+    opacity: 0;
+}
+
+[data-aos="zoom-in-down"] {
+    transform: translate3d(0, -100px, 0) scale(0.6);
+    opacity: 0;
+}
+
+[data-aos="zoom-out-up"] {
+    transform: translate3d(0, 100px, 0) scale(1.2);
+    opacity: 0;
+}
+
+[data-aos="zoom-out-down"] {
+    transform: translate3d(0, -100px, 0) scale(1.2);
+    opacity: 0;
+}
+
+/* Letter hover enhancements */
+.UnandPath-banner span {
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: default;
+}
+
+.UnandPath-banner span:hover {
+    transform: scale(1.2) translateY(-15px) rotateZ(5deg);
+    text-shadow: 0 0 20px rgba(255, 140, 66, 0.8),
+        0 0 40px rgba(255, 140, 66, 0.6), 0 0 60px rgba(255, 140, 66, 0.4);
+    color: #ffaa66;
+}
+
+/* Ensure button hover works after AOS animation */
+.getstarted-container button.aos-animate {
+    transform: scale(1) !important;
+}
+
+.getstarted-container button.aos-animate:hover {
+    transform: scale(1.15) !important;
 }

@@ -15,6 +15,6 @@ class CategoryController extends Controller
     public function tambahKegiatanView()
     {
         $categories = Category::all();
-        return view('tambahkegiatan', compact('categories'));
+        return view('user.tambahkegiatan', compact('categories'));
     }
 }

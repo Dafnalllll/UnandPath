@@ -76,7 +76,7 @@ public function showByCategory(Request $request)
                     ->get();
 
     $category = Category::find($categoryId); // untuk ditampilkan di judul jika mau
-    return view('data', compact('activities', 'category'));
+    return view('Pages.Data', compact('activities', 'category'));
 }
 
 public function approve($id)

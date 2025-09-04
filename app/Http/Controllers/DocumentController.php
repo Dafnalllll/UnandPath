@@ -22,7 +22,7 @@ class DocumentController extends Controller
         $activities = Activity::all();
         $categories = Category::all();
 
-        return view('dokumenakademik', compact('documents', 'activities', 'categories'));
+        return view('user.dokumenakademik', compact('documents', 'activities', 'categories'));
     }
 
     // Dokumen Non-Akademik
@@ -38,7 +38,7 @@ class DocumentController extends Controller
         $activities = Activity::all();
         $categories = Category::all();
 
-        return view('dokumennonakademik', compact('documents', 'activities', 'categories'));
+        return view('user.dokumennonakademik', compact('documents', 'activities', 'categories'));
     }
 
     // Menyimpan dokumen baru

@@ -1,7 +1,7 @@
 body {
     margin: 0px;
     padding: 0px;
-    background-image: url('/image/UnandAnimate.png');
+    background-image: url("/image/UnandAnimate.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -9,27 +9,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .login-container {
+}
+
+.login-container {
     max-width: 400px;
     margin: 80px auto;
     padding: 30px;
-    background-color:  #2E5E4E;
+    background-color: #2e5e4e;
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     text-align: center;
-  }
-  
-  .login-container h1 {
+}
+
+.login-container h1 {
     margin-bottom: 20px;
     font-size: 28px;
-    color: #FF8C42;
+    color: #ff8c42;
     font-weight: bold;
-  }
-  
-  .login-container input[type="email"],
-  .login-container input[type="password"] {
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
@@ -37,9 +37,9 @@ body {
     border-radius: 8px;
     font-size: 16px;
     box-sizing: border-box;
-  }
-  
-  .login-container button {
+}
+
+.login-container button {
     width: 100%;
     padding: 12px;
     background-color: #022f20;
@@ -49,62 +49,59 @@ body {
     font-size: 16px;
     cursor: pointer;
     margin-top: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .login-container button:hover {
-    background-color: #FF8C42;
-    transform: scale(1.05);
-  }
-
-  #error-message {
-  display: none;
-  color: red;
-  margin-top: 10px;
-  font-weight: 600; /* opsional, supaya lebih jelas */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 4px 15px rgba(2, 47, 32, 0.3);
 }
-  
-  .login-container .signup-link {
+
+.login-container button:hover {
+    background-color: #ff8c42;
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 140, 66, 0.5);
+}
+
+#error-message {
+    display: none;
+    color: red;
+    margin-top: 10px;
+    font-weight: 600; /* opsional, supaya lebih jelas */
+}
+
+.login-container .signup-link {
     margin-top: 20px;
     font-size: 14px;
     color: #333;
-  }
-  
-  .login-container .signup-link a {
+}
+
+.login-container .signup-link a {
     color: purple;
     font-weight: bold;
     text-decoration: none;
-  }
-  
-  .login-container .signup-link a:hover {
-    text-decoration: underline;
-  }
+}
 
-  .input-group {
-  display: flex;
-  align-items: center;
-  border-radius: 20px;
-  padding: 5px 15px;
-  margin: 8px 0;
+.login-container .signup-link a:hover {
+    text-decoration: underline;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px 15px;
+    margin: 8px 0;
 }
 
 .input-group i {
-  color: #333;
-  margin-right: 10px;
-  font-size: 16px;
-  min-width: 10px;
-  text-align: center;
+    color: #333;
+    margin-right: 10px;
+    font-size: 16px;
+    min-width: 10px;
+    text-align: center;
 }
 
 .input-group input {
-  border: none;
-  outline: none;
-  width: 100%;
-  font-size: 16px;
-  background-color: whitesmoke;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    background-color: whitesmoke;
 }
-  
-
-  
-  
-  

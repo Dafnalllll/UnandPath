@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $akademikCount = $activities->where('category_id', 1)->count();
         $nonakademikCount = $activities->where('category_id', 2)->count();
     
-        return view('dashboard', compact('activities', 'akademikCount', 'nonakademikCount'));
+        return view('Pages.dashboard', compact('activities', 'akademikCount', 'nonakademikCount'));
     }
     
     //

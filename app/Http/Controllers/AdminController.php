@@ -15,7 +15,7 @@ class AdminController extends Controller
         // Hitung jumlah akun mahasiswa
         $jumlahMahasiswa = User::where('role', 'user')->count(); // Pastikan kamu punya kolom 'role'
 
-        return view('admin', compact('activities', 'jumlahMahasiswa'));
+        return view('admin.admin', compact('activities', 'jumlahMahasiswa'));
     }
 }
 

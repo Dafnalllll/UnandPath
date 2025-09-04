@@ -27,7 +27,7 @@ Route::post('/signup', [AuthController::class, 'register'])->name('signup.submit
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/tambahkegiatan', [CategoryController::class, 'tambahKegiatanView']);
-    Route::get('/laporanskpi', fn() => view('laporanskpi'));
+    Route::get('/laporanskpi', fn() => view('user.laporanskpi'));
     Route::get('/data', [ActivityController::class, 'showByCategory'])->name('data');
     
 
@@ -57,7 +57,7 @@ Route::put('/activities/{id}/approve', [ActivityController::class, 'approve'])->
 Route::put('/activities/{id}/reject', [ActivityController::class, 'reject'])->name('activities.reject');
 
 // ✅ Home
-Route::get('/', fn() => view('home'))->name('home');
+Route::get('/', fn() => view('Pages.home'))->name('home');
 
 // ✅ Logout
 Route::post('/logout', function () {
@@ -69,5 +69,5 @@ Route::post('/logout', function () {
 
 // ✅ Fallback 404
 Route::fallback(function () {
-    return response()->view('pagenotfound', [], 404);
+    return response()->view('Pages.pagenotfound', [], 404);
 });
